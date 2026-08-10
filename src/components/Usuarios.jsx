@@ -223,7 +223,7 @@ function Usuarios({ apiBase }) {
               ) : (
                 logs.map((log) => (
                   <tr key={log.id}>
-                    <td className="nowrap">{new Date(log.created_at).toLocaleString('pt-BR')}</td>
+                    <td className="nowrap">{new Date(log.created_at.replace('Z', '')).toLocaleString('pt-BR')}</td>
                     <td>{log.user_nome ? log.user_nome : 'Anônimo'}</td>
                     <td>
                       <span className={`badge`} style={{

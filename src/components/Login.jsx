@@ -36,11 +36,20 @@ function Login({ onLogin, apiBase }) {
 
   return (
     <div className="login-container">
-      <div className="login-background"></div>
-      <div className="login-box">
+      <div 
+        className="login-background" 
+        style={{ 
+          backgroundImage: 'url(/car-side.svg)', 
+          backgroundSize: '80%', 
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.05
+        }}
+      ></div>
+      <div className="login-box" style={{ zIndex: 1 }}>
         <div className="login-header">
-          <div className="login-logo">
-            <Car size={36} color="var(--accent-primary)" />
+          <div className="login-logo" style={{ background: 'transparent', padding: 0, boxShadow: 'none', marginBottom: '20px' }}>
+            <img src="/car-logo-generated.png" alt="AutoHub" style={{ width: '240px', height: 'auto', borderRadius: '8px' }} />
           </div>
           <h1 className="login-title">Bem-vindo ao AutoHub</h1>
           <p className="login-subtitle">Acesse o sistema de gestão da oficina</p>

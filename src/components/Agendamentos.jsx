@@ -120,11 +120,17 @@ function Agendamentos({ apiBase, initialData = '', userRole }) {
     const method = editingId ? 'PUT' : 'POST';
     const url = editingId ? `${apiBase}/agendamentos/${editingId}` : `${apiBase}/agendamentos`;
 
+    // Convert local datetime string to UTC ISO string before sending
+    const dataToSend = { ...form };
+    if (dataToSend.data_hora) {
+      dataToSend.data_hora = new Date(dataToSend.data_hora).toISOString();
+    }
+
     try {
       const res = await apiFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+        body: JSON.stringify(dataToSend)
       });
       const data = await res.json();
 
@@ -142,7 +148,7 @@ function Agendamentos({ apiBase, initialData = '', userRole }) {
   };
 
   const formatDate = (dateStr) => {
-    const d = new Date(dateStr);
+    const d = new Date(dateStr.replace('Z', ''));
     return d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
   };
 

@@ -311,7 +311,7 @@ function OrdensServico({ apiBase, initialStatus = '', userRole }) {
                   <td className="nowrap"><strong>#{os.id}</strong></td>
                   <td>{os.cliente_nome}</td>
                   <td>{os.veiculo_marca} {os.veiculo_modelo} (<code>{os.veiculo_placa}</code>)</td>
-                  <td className="nowrap">{new Date(os.data_abertura).toLocaleDateString('pt-BR')}</td>
+                  <td className="nowrap">{new Date(os.data_abertura.replace('Z', '')).toLocaleDateString('pt-BR')}</td>
                   <td className="nowrap"><strong>R$ {parseFloat(os.valor_total).toFixed(2)}</strong></td>
                   <td className="nowrap">
                     <span className={`badge badge-${os.status}`}>
@@ -421,8 +421,8 @@ function OrdensServico({ apiBase, initialStatus = '', userRole }) {
                 </div>
                 <div className="detail-section">
                   <h4>Status & Histórico de Datas</h4>
-                  <p><strong>Abertura:</strong> {new Date(selectedOS.data_abertura).toLocaleString('pt-BR')}</p>
-                  <p><strong>Conclusão:</strong> {selectedOS.data_conclusao ? new Date(selectedOS.data_conclusao).toLocaleString('pt-BR') : 'Em aberto'}</p>
+                  <p><strong>Abertura:</strong> {new Date(selectedOS.data_abertura.replace('Z', '')).toLocaleString('pt-BR')}</p>
+                  <p><strong>Conclusão:</strong> {selectedOS.data_conclusao ? new Date(selectedOS.data_conclusao.replace('Z', '')).toLocaleString('pt-BR') : 'Em aberto'}</p>
                   <p><strong>Problema:</strong> {selectedOS.descricao_problema}</p>
                   
                   {/* Botões de Ação de Status */}

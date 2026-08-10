@@ -354,7 +354,7 @@ function Clientes({ apiBase, userRole }) {
                           <tr key={os.id}>
                             <td>#{os.id}</td>
                             <td>{os.modelo} ({os.placa})</td>
-                            <td>{new Date(os.data_abertura).toLocaleDateString('pt-BR')}</td>
+                            <td>{new Date(os.data_abertura.replace('Z', '')).toLocaleDateString('pt-BR')}</td>
                             <td>R$ {parseFloat(os.valor_total).toFixed(2)}</td>
                             <td>
                               <span className={`badge badge-${os.status}`}>

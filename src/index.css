@@ -17,10 +17,17 @@
   --text-secondary: #a1a1aa;/* zinc-400 */
   --text-muted: #71717a;    /* zinc-500 */
 
-  /* Accents (Indigo) */
-  --accent-primary: #6366f1;
-  --accent-hover: #4f46e5;
-  --accent-light: rgba(99, 102, 241, 0.15);
+  /* Accents (Yellow) */
+  --accent-primary: #FDFD22;
+  --accent-hover: #d3d311;
+  --accent-light: rgba(253, 253, 34, 0.15);
+
+  /* Extra Accents */
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-amber: #f59e0b;
+  --accent-blue: #3b82f6;
+  --accent-rose: #f43f5e;
 
   /* Semantic */
   --danger: #ef4444;
@@ -312,7 +319,8 @@ select.input-field option {
 
 .btn-primary {
   background-color: var(--accent-primary);
-  color: #ffffff;
+  color: #09090b;
+  font-weight: 600;
 }
 .btn-primary:hover:not(:disabled) {
   background-color: var(--accent-hover);
@@ -590,7 +598,7 @@ select.input-field option {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+  background: radial-gradient(circle at center, rgba(253, 253, 34, 0.08) 0%, transparent 50%);
   animation: rotateBackground 60s linear infinite;
   z-index: 0;
 }
@@ -629,8 +637,8 @@ select.input-field option {
   width: 72px;
   height: 72px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.02));
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: linear-gradient(135deg, rgba(253, 253, 34, 0.1), rgba(253, 253, 34, 0.02));
+  border: 1px solid rgba(253, 253, 34, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -679,7 +687,7 @@ select.input-field option {
 
 .login-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 20px rgba(253, 253, 34, 0.3);
 }
 
 .loading-spinner {

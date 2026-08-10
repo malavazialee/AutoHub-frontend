@@ -34,11 +34,24 @@ function Dashboard({ apiBase, setActiveTab }) {
         const ordens = Array.isArray(ordensData) ? ordensData : [];
         const agendamentos = Array.isArray(agendamentosData) ? agendamentosData : [];
         
+        const getLocalDateStr = (dateInput) => {
+          const d = new Date(dateInput);
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+
         // Calculate counts
         const activeOS = ordens.filter(o => o.status === 'aberta' || o.status === 'em_andamento').length;
         
-        const todayStr = new Date().toISOString().split('T')[0];
-        const todayAgend = agendamentos.filter(a => a.data_hora.startsWith(todayStr)).length;
+        const getDbDateStr = (dbDateStr) => {
+          if (!dbDateStr) return '';
+          return dbDateStr.split('T')[0];
+        };
+
+        const todayStr = getLocalDateStr(new Date());
+        const todayAgend = agendamentos.filter(a => getDbDateStr(a.data_hora) === todayStr).length;
 
         setStats({
           clientes: clientes.length,
@@ -52,8 +65,11 @@ function Dashboard({ apiBase, setActiveTab }) {
         todayAtMidnight.setHours(0, 0, 0, 0);
         
         const upcoming = agendamentos
-          .filter(a => new Date(a.data_hora) >= todayAtMidnight)
-          .sort((a, b) => new Date(a.data_hora) - new Date(b.data_hora));
+          .filter(a => {
+            const localDbDate = new Date(a.data_hora.replace('Z', ''));
+            return localDbDate >= todayAtMidnight && a.status === 'agendado';
+          })
+          .sort((a, b) => new Date(a.data_hora.replace('Z', '')) - new Date(b.data_hora.replace('Z', '')));
         
         setProximosAgendamentos(upcoming.slice(0, 5));
       } catch (error) {
@@ -67,7 +83,7 @@ function Dashboard({ apiBase, setActiveTab }) {
   }, [apiBase]);
 
   const formatDate = (dateStr) => {
-    const d = new Date(dateStr);
+    const d = new Date(dateStr.replace('Z', ''));
     return d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
   };
 

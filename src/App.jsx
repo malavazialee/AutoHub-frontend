@@ -58,6 +58,7 @@ function App() {
       {/* Sidebar de Navegação */}
       <aside className="sidebar">
         <div className="logo-container">
+          <img src="/car-logo-generated.png" alt="AutoHub" style={{ width: '42px', height: 'auto', borderRadius: '4px' }} />
           <span className="logo-text">AutoHub</span>
         </div>
         <nav>
