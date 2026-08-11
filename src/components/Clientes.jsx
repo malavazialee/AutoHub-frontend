@@ -283,7 +283,7 @@ function Clientes({ apiBase, userRole }) {
                     type="email"
                     required
                     className="input-field"
-                    placeholder="Ex: joao.silva@email.com"
+                    placeholder="Ex: joao.silva@gmail.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                   />
