@@ -148,7 +148,7 @@ function Agendamentos({ apiBase, initialData = '', userRole }) {
   };
 
   const formatDate = (dateStr) => {
-    const d = new Date(dateStr.replace('Z', ''));
+    const d = new Date(dateStr);
     return d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
   };
 

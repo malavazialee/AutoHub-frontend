@@ -370,8 +370,8 @@ function Veiculos({ apiBase, userRole }) {
                       {veiculoHistory.map(os => (
                         <tr key={os.id}>
                           <td>#{os.id}</td>
-                          <td>{new Date(os.data_abertura.replace('Z', '')).toLocaleDateString('pt-BR')}</td>
-                          <td>{os.data_conclusao ? new Date(os.data_conclusao.replace('Z', '')).toLocaleDateString('pt-BR') : '-'}</td>
+                          <td>{new Date(os.data_abertura).toLocaleDateString('pt-BR')}</td>
+                          <td>{os.data_conclusao ? new Date(os.data_conclusao).toLocaleDateString('pt-BR') : '-'}</td>
                           <td style={{ whiteSpace: 'normal', wordBreak: 'break-word' }}>{os.descricao_problema}</td>
                           <td className="nowrap">R$ {parseFloat(os.valor_total).toFixed(2)}</td>
                           <td>

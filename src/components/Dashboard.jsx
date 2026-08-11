@@ -66,10 +66,10 @@ function Dashboard({ apiBase, setActiveTab }) {
         
         const upcoming = agendamentos
           .filter(a => {
-            const localDbDate = new Date(a.data_hora.replace('Z', ''));
+            const localDbDate = new Date(a.data_hora);
             return localDbDate >= todayAtMidnight && a.status === 'agendado';
           })
-          .sort((a, b) => new Date(a.data_hora.replace('Z', '')) - new Date(b.data_hora.replace('Z', '')));
+          .sort((a, b) => new Date(a.data_hora) - new Date(b.data_hora));
         
         setProximosAgendamentos(upcoming.slice(0, 5));
       } catch (error) {
@@ -83,7 +83,7 @@ function Dashboard({ apiBase, setActiveTab }) {
   }, [apiBase]);
 
   const formatDate = (dateStr) => {
-    const d = new Date(dateStr.replace('Z', ''));
+    const d = new Date(dateStr);
     return d.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
   };
 
